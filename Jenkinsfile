@@ -43,7 +43,7 @@ pipeline {
                     echo "SSH Key Home: ${HOME}"  // Debugging information
 
                     sshagent(['sshkeypair']) {
-                        sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.88.201 'echo \$HOME; ${dockerCmd}'"
+                        sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.17.200 'echo \$HOME; ${dockerCmd}'"
                     }
                 }
             }
