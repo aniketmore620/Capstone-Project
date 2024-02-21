@@ -29,7 +29,7 @@ pipeline {
         }
         stage('Docker login') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'dockercred', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-pwd', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                     sh "echo $PASS | docker login -u $USER --password-stdin"
                     sh 'docker push moreaniket/dev:latest'
                 }
@@ -40,7 +40,7 @@ pipeline {
                 script {
                     def dockerCmd = 'docker run -itd --name My-first-container -p 80:5000 moreaniket/dev:latest'
                     sshagent(['sshkeypair']) {
-                        sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.83.117 ${dockerCmd}"
+                        sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.88.201 ${dockerCmd}"
                     }
                 }
             }
