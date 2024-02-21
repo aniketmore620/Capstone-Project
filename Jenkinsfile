@@ -38,7 +38,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    def dockerCmd = 'docker run -itd --name My-first-container1 -p 80:5000 moreaniket/dev:latest'
+                    def dockerCmd = 'docker run -itd --name My-first-container -p 80:5000 moreaniket/dev:latest'
 
                     echo "SSH Key Home: ${HOME}"  // Debugging information
 
